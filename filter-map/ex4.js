@@ -64,9 +64,15 @@ En prenant les deux exemples d'arguments d'entrée, on obtiendrait ceci en sorti
 */
 
 function getActivitiesMembers(activities, persons) {
+  return activities.map(myActivity => {
+    return {
+      activity: myActivity,
+      persons: persons
+        .filter(person => person.activities.includes(myActivity))
+        .map(person => person.name)
+    };
+  });
 }
-
-
 
 // Ne pas modifier l'export
 module.exports = getActivitiesMembers;
